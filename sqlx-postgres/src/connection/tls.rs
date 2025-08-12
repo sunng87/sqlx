@@ -81,7 +81,7 @@ async fn request_upgrade(
 
     socket.read(&mut &mut response[..]).await?;
 
-    println!("{:?}", response[0]);
+    println!("{:?} {:?}", response[0], std::time::Instant::now());
     match response[0] {
         b'S' => {
             // The server is ready and willing to accept an SSL connection

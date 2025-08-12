@@ -45,7 +45,7 @@ impl PgConnection {
             params.push(("options", options));
         }
 
-        println!("write startup");
+        println!("write startup {:?}", std::time::Instant::now());
         stream.write(Startup {
             username: Some(&options.username),
             database: options.database.as_deref(),
