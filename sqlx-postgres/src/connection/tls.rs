@@ -81,6 +81,7 @@ async fn request_upgrade(
 
     socket.read(&mut &mut response[..]).await?;
 
+    println!("{:?}", response[0]);
     match response[0] {
         b'S' => {
             // The server is ready and willing to accept an SSL connection
