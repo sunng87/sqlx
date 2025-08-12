@@ -66,6 +66,7 @@ impl PgStream {
     where
         T: FrontendMessage,
     {
+        println!("write {}", &message);
         self.write_msg(message)?;
         self.flush().await?;
         Ok(())
@@ -81,6 +82,7 @@ impl PgStream {
         // DO NOT modify `buf` unless a full message has been read
         self.inner
             .try_read(|buf| {
+                println!("recv_unchecked {}", &buf);
                 // all packets in postgres start with a 5-byte header
                 // this header contains the message type and the total length of the message
                 let Some(mut header) = buf.get(..5) else {
