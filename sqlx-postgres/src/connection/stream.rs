@@ -66,7 +66,7 @@ impl PgStream {
     where
         T: FrontendMessage,
     {
-        println!("write {:?}", &message);
+        println!("write msg: {:?}", T::FORMAT);
         self.write_msg(message)?;
         self.flush().await?;
         Ok(())
