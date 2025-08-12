@@ -45,6 +45,7 @@ impl PgConnection {
             params.push(("options", options));
         }
 
+        println!("write startup");
         stream.write(Startup {
             username: Some(&options.username),
             database: options.database.as_deref(),
